@@ -4,4 +4,4 @@ incase you get this error use colab "The TensorFlow library was compiled to use 
 
 Demo
 
-https://colab.research.google.com/drive/1qNlOva3TUtzhjLDaArXZ_qedLfVL0WM3?usp=sharing
+https://colab.research.google.com/drive/1qNlOva3TUtzhjLDaArXZ_0WM3?usp=sharing
