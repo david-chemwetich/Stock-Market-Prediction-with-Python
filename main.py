@@ -199,23 +199,4 @@ df_new = df.filter(['Close'])
 # Get the last N day closing price values and scale the data to be values between 0 and 1
 last_days_scaled = mmscaler.transform(df_new[-sequence_length:].values)
 
-# Create an empty list and Append past n days
-X_test = []
-X_test.append(last_days_scaled)
 
-# Convert the X_test data set to a numpy array and reshape the data
-X_test = np.array(X_test)
-X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
-
-# Get the predicted scaled price, undo the scaling and output the predictions
-pred_price = model.predict(X_test)
-pred_price_unscaled = mmscaler.inverse_transform(pred_price)
-
-# Print last price and predicted price for the next day
-price_today = round(df_new['Close'][-1], 2)
-predicted_price = round(pred_price_unscaled.ravel()[0], 2)
-percent = round(100 - (predicted_price * 100)/price_today, 2)
-
-plus = '+'; minus = ''
-print(f'The close price for {stockname} at {today} was {price_today}')
-print(f'The predicted close price is {predicted_price} ({plus if percent > 0 else minus}{percent}%)')
